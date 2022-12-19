@@ -1,0 +1,25 @@
+import pandas as pd
+filepath15 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2015.txt'
+df15 = pd.read_csv(filepath_or_buffer=filepath15, delimiter='|')
+filepath16 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2016.txt'
+df16 = pd.read_csv(filepath_or_buffer=filepath16, delimiter='|')
+filepath17 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2017.txt'
+df17 = pd.read_csv(filepath_or_buffer=filepath17, delimiter='|')
+filepath18 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2018.txt'
+df18 = pd.read_csv(filepath_or_buffer=filepath18, delimiter='|')
+filepath19 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2019.txt'
+df19 = pd.read_csv(filepath_or_buffer=filepath19, delimiter='|')
+filepath20 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2020.txt'
+df20 = pd.read_csv(filepath_or_buffer=filepath20, delimiter='|')
+filepath21 = 'C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2021.txt'
+df21 = pd.read_csv(filepath_or_buffer=filepath21, delimiter='|')
+
+df = pd.concat([df15, df16, df17, df18, df19, df20, df21])
+
+
+df = df[df["CO_IES"] == 374]
+
+
+print(df)
+
+df.to_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/fmu.txt', sep= '|')
