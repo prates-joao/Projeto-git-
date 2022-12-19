@@ -1,0 +1,33 @@
+#unico jeito que consegui abrir .csv aqui 
+import pandas as pd
+df15 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2015.csv', encoding='ISO-8859-1', sep=';')
+df16 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2016.csv', encoding='ISO-8859-1', sep=';')
+df17 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2017.csv', encoding='ISO-8859-1', sep=';')
+df18 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2018.csv', encoding='ISO-8859-1', sep=';')
+df19 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2019.csv', encoding='ISO-8859-1', sep=';')
+df20 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2020.csv', encoding='ISO-8859-1', sep=';')
+df21 = pd.read_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/MICRODADOS_CADASTRO_IES_2021.csv', encoding='ISO-8859-1', sep=';')
+df = pd.concat([df15, df16, df17, df18, df19, df20, df21])
+df = df[df["CO_IES"] == 374]
+df.to_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/fmu.csv', sep= '|')
+
+#9 linhas se não contar as bibliotecas 
+import pandas as pd
+import glob
+lista_arquivo=[]
+for arquivo in glob.glob(r'C:\Users\guhpr\OneDrive\Documentos\Microdados_Censo_IES\Dados\*xls'):
+    lista_arquivo.append(arquivo)
+tabelas=[]
+for arquivo in lista_arquivo:
+    tabelas.append(pd.read_excel(arquivo, index_col=0))
+df=pd.concat(tabelas)
+df = df[df["CO_IES"] == 374]
+df.to_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/fmu.csv', sep= '|')
+
+# o jeito mais curto que consegui achar mas deu o erro "'module' object is not callable" na linha 3
+import pandas as pd
+import glob
+files = sorted(glob(r'C:\Users\guhpr\OneDrive\Documentos\Microdados_Censo_IES\Dados\*xls'))
+df=pd.concat((pd.read_excel(file) for file in files), ignore_index=True)
+df = df[df["CO_IES"] == 374]
+df.to_csv('C:/Users/guhpr/OneDrive/Documentos/Microdados_Censo_IES/Dados/fmu.csv', sep= '|')
